@@ -1,0 +1,13 @@
+# Credenziali Database
+DB_HOST=db
+DB_PORT=3306
+DB_NAME=vue_django
+DB_USER=root
+DB_PASSWORD=*******
+
+# Variabile specifica per l'inizializzazione del container MariaDB
+MARIADB_ROOT_PASSWORD=******
+
+
+
+
