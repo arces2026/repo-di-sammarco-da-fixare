@@ -1,0 +1,198 @@
+# Dipendenze e moduli Node
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Dipendenze Python
+venv
+env
+ENV
+.venv
+.env
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+.eggs/
+*.egg
+*.egg-info/
+dist/
+build/
+develop-eggs/
+downloads/
+eggs/
+parts/
+sdist/
+var/
+*.manifest
+*.spec
+
+# File di configurazione IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+. DS_Store
+.vscode/
+
+# File di ambiente e variabili
+.env.local
+.env.*.local
+.env.production
+.env.development
+.env.test
+
+# File di build e distribuzione
+dist/
+build/
+*.log
+*.tmp
+*.temp
+
+# File di database e storage
+*.db
+*.sqlite3
+media/
+staticfiles/
+static/
+*.pid
+*.seed
+
+# File di test e coverage
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+.mypy_cache/
+.coverage.*
+*.cover
+*.py,cover
+nosetests.xml
+coverage.xml
+*.log
+
+# File di sistema e backup
+.DS_Store
+Thumbs.db
+*.bak
+*.backup
+*.old
+*.orig
+
+# Docker specific
+Dockerfile
+docker-compose*.yml
+.dockerignore
+.docker/
+*.dockerfile
+
+# File di configurazione Git
+.git/
+.gitignore
+.gitattributes
+.gitmodules
+
+# File di deploy e CI/CD
+.github/
+.gitlab/
+travis.yml
+.travis.yml
+jenkins.yml
+*.yml
+*.yaml
+!docker-compose.yml
+
+# File di documentazione
+README.md
+README.rst
+LICENSE
+CHANGELOG.md
+CONTRIBUTING.md
+*.md
+!package.json
+!yarn.lock
+
+# File di frontend (Vue specific)
+*.map
+*.tsbuildinfo
+*.cache
+.eslintcache
+*.lock
+*.log
+*.tmp
+*.temp
+.dist
+.output
+.nuxt
+.cache
+.parcel-cache
+
+# File temporanei
+tmp/
+temp/
+*.swp
+*.swo
+*~
+
+# File di backend (Django specific)
+*.mo
+*.po
+*.pot
+*.sql
+*.sqlite
+*.sqlite3
+*.bak
+
+# File di configurazione secrets
+config.json
+secrets.json
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# File di dipendenze (mantieni solo package.json e requirements.txt)
+!package.json
+!requirements.txt
+!pyproject.toml
+!setup.py
+
+# File di assets di frontend (escludi ma mantieni source)
+!src/
+!public/
+!index.html
+!vite.config.js
+!vue.config.js
+
+# File di assets di backend (escludi ma mantieni source)
+!manage.py
+!*.py
+!*/__init__.py
+!**/*.py
+!templates/
+!*.html
+!*.css
+!*.js
+
+# Mantieni i file di configurazione essenziali
+!Dockerfile
+!docker-compose.yml
+!Makefile
+!*.conf
+!nginx.conf
+!uwsgi.ini
+!gunicorn.conf.py
+!celery*.py
+!wsgi.py
+!asgi.py
+
+# Escludi tutto tranne i file essenziali
+# Nota: le righe con ! sono eccezioni alle esclusioni

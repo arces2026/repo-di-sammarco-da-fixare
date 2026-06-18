@@ -1,0 +1,89 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "cognome": "Sammarco",
+      "nome": "Ignazio",
+      "eta": 54,
+      "email": "netsamma@gmail.com"
+    },
+    {
+      "id": "2",
+      "cognome": "Rossi",
+      "nome": "Mario",
+      "eta": 30,
+      "email": "mario.rossi@gmail.com"
+    },
+    {
+      "id": "3",
+      "cognome": "Bianchi",
+      "nome": "Luigi",
+      "eta": 25,
+      "email": "luigi.bianchi@gmail.com"
+    },
+    {
+      "id": "4",
+      "cognome": "Verdi",
+      "nome": "Giovanni",
+      "eta": 35,
+      "email": "giovanni.verdi@gmail.com"
+    },
+    {
+      "id": "5",
+      "cognome": "Ferrari",
+      "nome": "Marco",
+      "eta": 28,
+      "email": "marco.ferrari@gmail.com"
+    },
+    {
+      "id": "6",
+      "cognome": "Esposito",
+      "nome": "Antonio",
+      "eta": 45,
+      "email": "antonio.esposito@gmail.com"
+    },
+    {
+      "id": "7",
+      "cognome": "Romano",
+      "nome": "Andrea",
+      "eta": 32,
+      "email": "andrea.romano@gmail.com"
+    },
+    {
+      "id": "8",
+      "cognome": "Rizzo",
+      "nome": "Francesco",
+      "eta": 29,
+      "email": "francesco.rizzo@gmail.com"
+    },
+    {
+      "id": "18",
+      "cognome": "c",
+      "nome": "c",
+      "eta": 1,
+      "email": "c@c.it"
+    },
+    {
+      "id": "Lht4k_ygF6c",
+      "cognome": "D",
+      "nome": "d",
+      "eta": 12,
+      "email": "d@d.it"
+    },
+    {
+      "id": "PWwSxJoPC5U",
+      "cognome": "F",
+      "nome": "F",
+      "eta": 19,
+      "email": "d@d.it"
+    },
+    {
+      "id": "E3J9BMS2N2M",
+      "cognome": "m",
+      "nome": "m",
+      "eta": 2,
+      "email": "m@m.it"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
