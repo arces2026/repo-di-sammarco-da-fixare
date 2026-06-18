@@ -7,10 +7,10 @@ services:
       - .env
     environment:
       # Se DB_USER è "root", MYSQL_ROOT_PASSWORD deve coincidere con DB_PASSWORD
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
     healthcheck:
@@ -24,6 +24,10 @@ services:
     build:
       context: .
     container_name: django-backend
+
+      # Comanda il comando che deve essere eseguito all'avvio del container
+    command: ./wait-for-it.sh db:3306 -t 30 -- python manage.py runserver 0.0.0.0:8000
+
     restart: unless-stopped
     env_file:
       - .env
