@@ -43,35 +43,40 @@ const filteredData = computed(() => {
 // Helper function to get all nested keys from an object
 /**
  * Recursively extracts all nested key paths from an object using dot notation
- * 
+ *
  * @param {Object} obj - The object to traverse and extract keys from
  * @param {string} prefix - The current path prefix (used internally for recursion)
  * @returns {string[]} Array of all nested key paths (e.g., ['name', 'address.city', 'address.location.lat'])
- * 
+ *
  * Example:
  *   const data = { user: { name: 'John', address: { city: 'NYC' } } }
  *   getAllKeys(data) // Returns: ['user.name', 'user.address', 'user.address.city']
  */
 
-
 function getAllKeys(obj, prefix = '') {
-  console.log({'firstObjectPrinted': firstObjectPrinted})
-  firstObjectPrinted++;
   // DEBUG: Log function invocation with current parameters
   // console.log('getAllKeys fired',{'obj': obj, 'prefix': prefix})
-  
+
   // Initialize an array to store all the key paths we find
   let keys = []
-  // console.log({'keys': keys}) // DEBUG: Initial empty array
-  
+  console.log({ keys: keys }) // DEBUG: Initial empty array
+
   // BASE CASE: If obj is null/undefined or not an object, return empty array
   // This prevents errors and stops recursion when we hit primitive values
   if (!obj || typeof obj !== 'object') {
     return keys
   }
 
-  console.log({'object': obj}) // DEBUG: Log the object being processed
-  
+  console.log({ 'full obj': obj, 'nome autore': obj?.autore?.nome }) // DEBUG: Log the object being processed
+  // Or check all at once with more info
+  console.log('Full path check:', {
+    hasObj: !!obj,
+    hasObject: !!obj?.object,
+    hasAutore: !!obj?.object?.autore,
+    hasNome: !!obj?.object?.autore?.nome,
+    value: obj?.object?.autore?.nome,
+  })
+
   // STEP 1: Loop through every property in the current object
   for (const key in obj) {
     // STEP 2: Build the complete dot-notation path
@@ -80,15 +85,13 @@ function getAllKeys(obj, prefix = '') {
     // Example: prefix='address', key='city' → 'address.city'
     const fullKey = prefix ? `${prefix}.${key}` : key
     // console.log({'fullKey': fullKey}) // DEBUG: Log the full path we're working with
-    
+
     // STEP 3: Check if this property's value is a nested object
     // Conditions:
     // - Is it an 'object' type? (not string, number, boolean, etc.)
     // - Is it NOT null? (null is technically an object but we want to treat it as a leaf)
     // - Is it NOT an Array? (we treat arrays as leaf values, not nested objects)
     if (typeof obj[key] === 'object' && obj[key] !== null && !Array.isArray(obj[key])) {
-      
-      
       // STEP 3A: RECURSIVE CASE - Value is a nested object
       // Recursively call getAllKeys on the nested object
       // Pass the fullKey as the new prefix to maintain the dot-notation path
@@ -96,7 +99,6 @@ function getAllKeys(obj, prefix = '') {
       // Example: If obj[key] is { city: 'NYC', zip: '10001' }
       // This will return ['city', 'zip'] which becomes ['address.city', 'address.zip']
       keys = keys.concat(getAllKeys(obj[key], fullKey))
-      
     } else {
       // STEP 3B: BASE CASE - Value is a leaf (primitive, null, or array)
       // We've reached the end of this path, so add the full path to our keys array
@@ -105,7 +107,7 @@ function getAllKeys(obj, prefix = '') {
       keys.push(fullKey)
     }
   }
-  
+
   // STEP 4: Return the complete array of all key paths found
   return keys
 }

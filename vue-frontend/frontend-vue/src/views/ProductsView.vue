@@ -25,7 +25,7 @@ onMounted(() => {
       libri.value = data.results
     })
     
-    console.log(libri.value);
+    // console.log(libri.value);
 
   fetch('http://localhost:8000/api/autori')
     .then((response) => {
@@ -41,7 +41,7 @@ onMounted(() => {
       autori.value = data.results
     })
     
-    console.log(autori.value);
+    // console.log(autori.value);
 });
 
 
