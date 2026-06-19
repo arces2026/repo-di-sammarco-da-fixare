@@ -6,9 +6,9 @@ services:
     env_file:
       - .env
     environment:
-      # Se DB_USER è "root", MYSQL_ROOT_PASSWORD deve coincidere con DB_PASSWORD
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
+      # Se DB_USER è "root", MARIADB_ROOT_PASSWORD deve coincidere con DB_PASSWORD
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${DB_NAME}
     ports:
       - "3306:3306"
     volumes:
