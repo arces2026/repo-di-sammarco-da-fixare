@@ -6,7 +6,6 @@ from .serializers import (
     AutoreSerializer,
     LibroReadSerializer,
     LibroWriteSerializer,
-    UserRegistrationSerializer,
 )
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from rest_framework.response import Response
@@ -70,27 +69,27 @@ class AutoreViewSet(viewsets.ModelViewSet):
         return [permission() for permission in permission_classes]
 
 
-@api_view(["GET"])
-@permission_classes([IsAuthenticated])
-def profilo(request):
-    return Response({"username": request.user.username, "user_id": request.user.id})
+# @api_view(["GET"])
+# @permission_classes([IsAuthenticated])
+# def profilo(request):
+#     return Response({"username": request.user.username, "user_id": request.user.id})
 
 
-@api_view(['POST'])
-@permission_classes([AllowAny])
-def register_user(request):
-    '''
-    Register a new user
-    '''
-    serializer = UserRegistrationSerializer(data=request.data)
+# @api_view(['POST'])
+# @permission_classes([AllowAny])
+# def register_user(request):
+#     '''
+#     Register a new user
+#     '''
+#     serializer = UserRegistrationSerializer(data=request.data)
     
-    if serializer.is_valid():
-        user = serializer.save()
-        return Response({
-            'message': f'User {user.username} created successfully',
-            'user_id': user.id,
-            'username': user.username
-        }, status=status.HTTP_201_CREATED )
+#     if serializer.is_valid():
+#         user = serializer.save()
+#         return Response({
+#             'message': f'User {user.username} created successfully',
+#             'user_id': user.id,
+#             'username': user.username
+#         }, status=status.HTTP_201_CREATED )
         
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "catalog",
+    "log_reg",
 ]
 
 REST_FRAMEWORK = {
@@ -200,9 +201,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'it-it'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Rome'
 
 USE_I18N = True
 
