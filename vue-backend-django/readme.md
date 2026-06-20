@@ -11,7 +11,6 @@ API REST per un sistema di gestione di una libreria con autenticazione JWT, cont
 - [Prerequisiti](#-prerequisiti)
 - [Struttura del Progetto](#-struttura-del-progetto)
 - [Installazione e Avvio con Docker](#-installazione-e-avvio-con-docker)
-- [Comandi Utili Docker](#comandi-utili-docker)
 - [Gestione del Database](#gestione-del-database)
 - [Autenticazione JWT](#autenticazione-jwt)
 - [Endpoints API](#-endpoints-api)
@@ -81,8 +80,8 @@ Prima di iniziare, assicurati di avere installato:
 
 ## 📁 Struttura del Progetto
 
-```
-VUE-DJANGO-FOLDER/
+```text
+MONO-REPO-DJANGO-VUE/
 │
 ├── django-backend/                    # Backend Django
 │   ├── bookshelf/                     # Configurazione progetto Django
@@ -104,161 +103,21 @@ VUE-DJANGO-FOLDER/
 │   ├── requirements.txt               # Dipendenze Python
 │   ├── dockerfile                     # Dockerfile per il backend
 │   ├── wait-for-it.sh                 # Script di attesa per il database
-│   └── db.sqlite3                     # Database SQLite (solo sviluppo locale)
+│   ├── db.sqlite3                     # Database SQLite (solo sviluppo locale)
+│   └── README.md                      # Questo file
 │
 ├── vue-frontend/                      # Frontend Vue.js (progetto separato)
 │
 ├── docker-compose.yml                 # Orchestrazione container Docker
 ├── .env                               # Variabili d'ambiente
-└── README.md                          # Questo file
+├── .gitignore                         # ignora i file non utili nei repositories
+├── .dockerignore                      # ignora i file non utili nei containers
+└── README.md                          # Readme generale
+
 ```
 
 ---
-[↑ torna su](#-indice)
 
-## 🐳 Installazione e Avvio con Docker
-
-### 1. Clona il Repository
-
-```bash
-git clone <url-del-repository>
-cd VUE-DJANGO-FOLDER
-```
-
-### 2. Configura le Variabili d'Ambiente
-
-Crea un file `.env` nella **root del progetto** (dove si trova `docker-compose.yml`):
-
-```bash
-# .env
-# Configurazione Database
-DB_HOST=db
-DB_PORT=3306
-DB_NAME=vue_django
-DB_USER=root
-DB_PASSWORD=********
-
-# Configurazione MariaDB
-MYSQL_ROOT_PASSWORD=********
-```
-
-> **⚠️ IMPORTANTE**: Sostituisci `********` con una password sicura per l'ambiente di produzione. Il file `.env` NON deve essere committato nel repository (aggiungilo al `.gitignore`).
-
-### 3. Costruisci e Avvia i Container
-
-```bash
-# Costruisci le immagini e avvia i container in background
-docker-compose up -d --build
-
-# Verifica che i container siano in esecuzione
-docker ps
-```
-
-Dovresti vedere due container attivi:
-- `django-backend` - Django application (porta 8000)
-- `mariadb` - Database MariaDB (porta 3306)
-
-### 4. Applica le Migrazioni del Database
-
-```bash
-# Applica le migrazioni per creare le tabelle nel database
-docker exec -it django-backend python manage.py migrate
-```
-
-### 5. Crea un Superutente (Admin)
-
-```bash
-# Crea un account amministratore per l'admin panel
-docker exec -it django-backend python manage.py createsuperuser
-```
-
-Segui le istruzioni per inserire:
-- **Username**: `admin` (o quello che preferisci)
-- **Email**: `admin@example.com`
-- **Password**: `admin123` (o una password sicura)
-
-### 6. Verifica che tutto funzioni
-
-Apri il browser e visita:
-
-- **Admin Panel**: http://localhost:8000/admin/
-- **API Books**: http://localhost:8000/api/libri/
-- **API Authors**: http://localhost:8000/api/autori/
-- **Register**: http://localhost:8000/api/register/
-
----
-[↑ torna su](#-indice)
-<a id='comandi-utili-docker'><a>
-
-## 🛠️ Comandi Utili Docker
-
-### Gestione dei Container
-
-```bash
-# Visualizza i container in esecuzione
-docker ps
-
-# Visualizza tutti i container (anche fermati)
-docker ps -a
-
-# Ferma i container (senza rimuoverli)
-docker-compose stop
-
-# Avvia i container fermati
-docker-compose start
-
-# Riavvia i container
-docker-compose restart
-
-# Ferma e rimuove i container (i volumi persistono)
-docker-compose down
-
-# Ferma, rimuove container e volumi (PERDE I DATI!)
-docker-compose down -v
-```
-
-### Visualizzazione dei Log
-
-```bash
-# Visualizza i log del backend (in tempo reale)
-docker logs -f django-backend
-
-# Visualizza i log del database
-docker logs -f mariadb
-
-# Visualizza gli ultimi 100 log del backend
-docker logs --tail 100 django-backend
-```
-
-### Comandi Django
-
-```bash
-# Entra nella shell del container
-docker exec -it django-backend /bin/bash
-
-# Esegui comandi Django senza entrare nel container
-docker exec -it django-backend python manage.py <comando>
-
-# Esempi:
-docker exec -it django-backend python manage.py makemigrations
-docker exec -it django-backend python manage.py migrate
-docker exec -it django-backend python manage.py createsuperuser
-docker exec -it django-backend python manage.py shell
-```
-
-### Riavvio dopo Modifiche al Codice
-
-Il container è configurato con **hot-reload** grazie al volume montato (`./django-backend:/app`). Le modifiche al codice vengono rilevate automaticamente, ma in caso di problemi:
-
-```bash
-# Riavvia solo il backend
-docker-compose restart web
-
-# Oppure ricostruisci tutto
-docker-compose up -d --build
-```
-
----
 [↑ torna su](#-indice)
 <a id='gestione-del-database'><a>
 
@@ -268,10 +127,10 @@ docker-compose up -d --build
 
 ```bash
 # Connettiti al database tramite terminale
-docker exec -it mariadb mysql -u root -p
-# Inserisci la password: sciamano
+docker exec -it mariadb mariadb -u root -p
+# Inserisci la tua password: ********
 
-# Una volta dentro MySQL:
+# Una volta dentro mariadb:
 USE vue_django;
 SHOW TABLES;
 SELECT * FROM auth_user;
@@ -283,17 +142,17 @@ SELECT * FROM catalog_autore;
 
 ```bash
 # Crea un backup del database
-docker exec mariadb mysqldump -u root -psciamano vue_django > backup_$(date +%Y%m%d).sql
+docker exec mariadb mysqldump -u root -p[your-password] vue_django > backup_$(date +%Y%m%d).sql
 
 # Backup di tutti i database
-docker exec mariadb mysqldump -u root -psciamano --all-databases > backup_full.sql
+docker exec mariadb mysqldump -u root -p[your-password] --all-databases > backup_full.sql
 ```
 
 ### Ripristino del Database
 
 ```bash
 # Ripristina da backup
-cat backup.sql | docker exec -i mariadb mysql -u root -psciamano vue_django
+cat [nome_file].sql | docker exec -i mariadb mariadb -u root -p[your-password] vue_django
 ```
 
 ### Migrazioni del Database
