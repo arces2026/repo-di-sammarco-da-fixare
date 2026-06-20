@@ -168,6 +168,21 @@ docker exec -it django-backend python manage.py migrate
 docker exec -it django-backend python manage.py sqlmigrate catalog 0001
 ```
 
+### Collegamento al container mariadb da Dbeaver (se mariadb è installato anche in locale)
+
+```bash
+# Se mariadb è installato in locale bisogna mappare una porta host diversa dalla 3306
+# altrimenti Dbeaver si colleghera con l'istanza locale.
+...
+ environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${DB_NAME}
+    ports:
+      - "3307:3306" # <--- la porta host (a sx) deve essere diversa dalla 3306
+    volumes:
+...
+```
+
 ---
 [↑ torna su](#-indice)
 

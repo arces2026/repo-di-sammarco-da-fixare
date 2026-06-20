@@ -10,8 +10,8 @@ const router = useRouter()
 const form = reactive({
   username: '',
   email: '',
-  firstName: '',
-  lastName: '',
+  first_name: '',
+  last_name: '',
   password: '',
   password2: '',
 })
@@ -69,8 +69,8 @@ const HandleRegister = async () => {
 
 <template>
   <form>
-    <input type="text" placeholder="First name" v-model="form.firstName" />
-    <input type="text" placeholder="Last Name" v-model="form.lastName" />
+    <input type="text" placeholder="First name" v-model="form.first_name" />
+    <input type="text" placeholder="Last Name" v-model="form.last_name" />
     <input type="email" placeholder="Email" v-model="form.email" />
     <input type="text" placeholder="Username" v-model="form.username" />
     <input type="password" placeholder="Password" v-model="form.password" />
