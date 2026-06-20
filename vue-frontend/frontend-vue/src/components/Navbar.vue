@@ -11,6 +11,7 @@
                 <a href="#" @click.prevent="handleLogout">Logout</a>
             </li>
             <li v-else><router-link to="/login">Login</router-link></li>
+            <li><router-link to="/register">Register</router-link></li>
         </ul>
     </nav>
 </template>
@@ -23,7 +24,7 @@
     const authStore = useAuthStore();
 
     function handleLogout(){
-        authStore.removeToken();
+        authStore.logout();
         router.push('/login');
     }
 </script>

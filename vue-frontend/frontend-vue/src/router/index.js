@@ -1,6 +1,7 @@
 import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
 import ProductsView from '@/views/ProductsView.vue'
+import RegisterView from '@/views/RegisterView.vue'
 import UsersView from '@/views/UsersView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 // import { jwtDecode } from 'jwt-decode';
@@ -28,6 +29,11 @@ const router = createRouter({
       path:'/login',
       name:'login',
       component: LoginView
+    },
+    {
+      path:'/register',
+      name:'register',
+      component: RegisterView
     }
   ],
 })
