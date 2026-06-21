@@ -1,15 +1,20 @@
 <script setup>
-import Grid from '@/components/Grid.vue';
-import ProductList from '@/components/ProductList.vue';
-import { onMounted, ref } from 'vue';
+import Grid from '@/components/Grid.vue'
+import ProductList from '@/components/ProductList.vue'
+import { onMounted, ref } from 'vue'
+import { useConstStore } from '@/stores/constStore'
 
-const libri = ref([]);
-const autori = ref([]);
+const constStore = useConstStore()
+
+const libri = ref([])
+const autori = ref([])
 
 const gridLibriColumns = ['titolo', 'anno', 'genere', 'autore.nome']
+const radioSelection = ['titolo', 'anno', 'genere', 'autore.nome', 'all']
 const gridAutoriColumns = ['nome', 'nazione']
 const searchQuery = ref('')
-
+const selectedField = ref('all')
+console.log({selectedField: selectedField.value})
 onMounted(() => {
   fetch('http://localhost:8000/api/v1/libri/')
     .then((response) => {
@@ -22,10 +27,12 @@ onMounted(() => {
     })
     .then((data) => {
       // Aggiorna lo stato reattivo con i dati ricevuti
+      console.log({ dataResults: data.results })
+      console.log({ libriKeys: Object.keys(data.results[0]) })
       libri.value = data.results
     })
-    
-    // console.log(libri.value);
+
+  console.log(libri.value)
 
   fetch('http://localhost:8000/api/v1/autori')
     .then((response) => {
@@ -40,26 +47,26 @@ onMounted(() => {
       // Aggiorna lo stato reattivo con i dati ricevuti
       autori.value = data.results
     })
-    
-    // console.log(autori.value);
-});
 
-
+  // console.log(autori.value);
+})
 </script>
 
 <template>
-  <main class="main" >
+  <main class="main">
     <form id="search">
-      Cerca <input name="query" v-model="searchQuery">
+      Cerca <input name="query" v-model="searchQuery" />
+      <ul v-for="key in radioSelection" :key="key">
+        <label for="key">{{ key }}</label>
+        <input type="radio" name="radio" v-model="selectedField" checked="key"/>
+      </ul>
+      <!-- <label for="all">All</label>
+      <input id="all" type="radio" name="radio" /> -->
     </form>
 
-    <Grid
-      style="width: 45%;"
-      :data="libri"
-      :columns="gridLibriColumns"
-      :filter-key="searchQuery">
+    <Grid style="width: 45%" :data="libri" :columns="gridLibriColumns" :filter-key="searchQuery" :selected-field="selectedField">
     </Grid>
-    
+
     <!-- <Grid
       style="width: 45%;"
       :data="autori"
@@ -67,13 +74,11 @@ onMounted(() => {
       :filter-key="searchQuery">
     </Grid> -->
   </main>
-
 </template>
 
 <style>
-  .main{
-    display: flex;
-    justify-content:space-between;
-  }
-
+.main {
+  display: flex;
+  justify-content: space-between;
+}
 </style>

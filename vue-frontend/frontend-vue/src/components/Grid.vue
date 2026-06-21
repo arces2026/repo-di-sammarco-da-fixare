@@ -1,11 +1,18 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { useConstStore } from '@/stores/constStore'
+
+const constStore = useConstStore();
+const dataToSearch = ref('all')
 
 const props = defineProps({
   data: Array,
   columns: Array,
   filterKey: String,
+  selectedField: String,
 })
+
+
 
 const sortKey = ref('')
 const sortOrders = ref(props.columns.reduce((o, key) => ((o[key] = 1), o), {}))
@@ -17,6 +24,7 @@ const getNestedValue = (obj, path) => {
 const filteredData = computed(() => {
   let { data, filterKey } = props
   console.log({ data: data.map(obj => obj.titolo), filterKey: filterKey })
+  let dataField = data.map(obj => obj.dataToSearch)
   if (filterKey && data) {
     filterKey = filterKey.toLowerCase()
     // console.log({ filterKey: filterKey })
@@ -68,15 +76,15 @@ function getAllKeys(obj, prefix = '') {
     return keys
   }
 
-  console.log({ 'full obj': obj, 'nome autore': obj?.autore?.nome }) // DEBUG: Log the object being processed
-  // Or check all at once with more info
-  console.log('Full path check:', {
-    hasObj: !!obj,
-    hasObject: !!obj?.object,
-    hasAutore: !!obj?.object?.autore,
-    hasNome: !!obj?.object?.autore?.nome,
-    value: obj?.object?.autore?.nome,
-  })
+  // console.log({ 'full obj': obj, 'nome autore': obj?.autore?.nome }) // DEBUG: Log the object being processed
+  // // Or check all at once with more info
+  // console.log('Full path check:', {
+  //   hasObj: !!obj,
+  //   hasObject: !!obj?.object,
+  //   hasAutore: !!obj?.object?.autore,
+  //   hasNome: !!obj?.object?.autore?.nome,
+  //   value: obj?.object?.autore?.nome,
+  // })
 
   // STEP 1: Loop through every property in the current object
   for (const key in obj) {
