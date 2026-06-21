@@ -58,7 +58,7 @@ onMounted(() => {
       Cerca <input name="query" v-model="searchQuery" />
       <ul v-for="key in radioSelection" :key="key">
         <label for="key">{{ key }}</label>
-        <input type="radio" name="radio" v-model="selectedField" checked="key"/>
+        <input type="radio" name="radio" v-model="selectedField" :value="key"/>
       </ul>
       <!-- <label for="all">All</label>
       <input id="all" type="radio" name="radio" /> -->

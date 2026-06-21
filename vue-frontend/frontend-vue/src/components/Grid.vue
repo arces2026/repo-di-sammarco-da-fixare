@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { useConstStore } from '@/stores/constStore'
 
-const constStore = useConstStore();
+const constStore = useConstStore()
 const dataToSearch = ref('all')
 
 const props = defineProps({
@@ -12,8 +12,6 @@ const props = defineProps({
   selectedField: String,
 })
 
-
-
 const sortKey = ref('')
 const sortOrders = ref(props.columns.reduce((o, key) => ((o[key] = 1), o), {}))
 
@@ -22,18 +20,30 @@ const getNestedValue = (obj, path) => {
 }
 
 const filteredData = computed(() => {
-  let { data, filterKey } = props
-  console.log({ data: data.map(obj => obj.titolo), filterKey: filterKey })
-  let dataField = data.map(obj => obj.dataToSearch)
+  let { data, filterKey, selectedField } = props
+  console.log({ data: data.map((obj) => obj.titolo), filterKey: filterKey })
+  let dataField = data.map((obj) => obj.dataToSearch)
   if (filterKey && data) {
     filterKey = filterKey.toLowerCase()
     // console.log({ filterKey: filterKey })
     data = data.filter((row) => {
-      const allKeys = getAllKeys(row)
-      return allKeys.some((keyPath) => {
-        const value = getNestedValue(row, keyPath)
-        return String(value).toLowerCase().includes(filterKey)
-      })
+      if (selectedField === 'all') {
+        const allKeys = getAllKeys(row)
+
+        // const allKeys = selectedField
+        console.log({ allKeys: allKeys })
+        // console.log({selectedField: selectedField})
+        return allKeys.some((keyPath) => {
+          // return selectedField.some((keyPath) => {
+          console.log({ keyPath: keyPath })
+          const value = getNestedValue(row, keyPath)
+          console.log({ value: value })
+          return String(value).toLowerCase().includes(filterKey)
+        })
+      } else {
+        const value = getNestedValue(row, selectedField)
+        return value.toLocaleLowerCase().includes(filterKey)
+      }
     })
   }
   const key = sortKey.value
