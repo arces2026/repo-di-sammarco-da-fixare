@@ -1,0 +1,34 @@
+# --- FASE 1: BUILD ---
+# Usa un'immagine Node.js leggera per compilare il progetto Vue
+FROM node:20-slim AS build
+
+# Imposta la cartella di lavoro all'interno del container
+WORKDIR /app
+
+# Copia i file di configurazione delle dipendenze per sfruttare la cache di Docker
+COPY package*.json ./
+
+# Installa tutte le dipendenze necessarie per il progetto (node_modules)
+RUN npm install
+
+# Copia tutto il resto del codice sorgente nella cartella di lavoro
+COPY . .
+
+# Esegue il processo di build di Vue (Vite), creando la cartella 'dist' con i file statici pronti per la produzione
+RUN npm run build
+
+# --- FASE 2: SERVER (PRODUZIONE) ---
+# Usa un'immagine Nginx estremamente leggera per servire i file statici
+FROM nginx:alpine
+
+# Copia solo i file compilati (la cartella 'dist') dalla Fase 1 alla cartella di Nginx che serve i siti web
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Indica che il container sarà in ascolto sulla porta 80 (porta standard HTTP)
+EXPOSE 80
+
+# CMD definisce il comando per avviare il server Nginx all'avvio del container:
+# "nginx" è l'eseguibile del server web.
+# "-g 'daemon off;'" è l'argomento fondamentale: dice a Nginx di girare in "primo piano" (foreground).
+# Se non fosse presente, Nginx girerebbe in background e il container si chiuderebbe immediatamente dopo l'avvio.
+CMD ["nginx", "-g", "daemon off;"]
