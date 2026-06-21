@@ -16,6 +16,7 @@ const getNestedValue = (obj, path) => {
 
 const filteredData = computed(() => {
   let { data, filterKey } = props
+  console.log({ data: data.map(obj => obj.titolo), filterKey: filterKey })
   if (filterKey && data) {
     filterKey = filterKey.toLowerCase()
     // console.log({ filterKey: filterKey })

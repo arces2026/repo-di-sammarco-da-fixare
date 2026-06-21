@@ -11,7 +11,7 @@ const gridAutoriColumns = ['nome', 'nazione']
 const searchQuery = ref('')
 
 onMounted(() => {
-  fetch('http://localhost:8000/api/libri/')
+  fetch('http://localhost:8000/api/v1/libri/')
     .then((response) => {
       // Controllo manuale dello stato HTTP
       if (!response.ok) {
@@ -27,7 +27,7 @@ onMounted(() => {
     
     // console.log(libri.value);
 
-  fetch('http://localhost:8000/api/autori')
+  fetch('http://localhost:8000/api/v1/autori')
     .then((response) => {
       // Controllo manuale dello stato HTTP
       if (!response.ok) {
