@@ -1,9 +1,5 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { useConstStore } from '@/stores/constStore'
-
-const constStore = useConstStore()
-const dataToSearch = ref('all')
 
 const props = defineProps({
   data: Array,
@@ -21,29 +17,14 @@ const getNestedValue = (obj, path) => {
 
 const filteredData = computed(() => {
   let { data, filterKey, selectedField } = props
-  console.log({ data: data.map((obj) => obj.titolo), filterKey: filterKey })
-  let dataField = data.map((obj) => obj.dataToSearch)
   if (filterKey && data) {
     filterKey = filterKey.toLowerCase()
-    // console.log({ filterKey: filterKey })
     data = data.filter((row) => {
-      if (selectedField === 'all') {
-        const allKeys = getAllKeys(row)
-
-        // const allKeys = selectedField
-        console.log({ allKeys: allKeys })
-        // console.log({selectedField: selectedField})
-        return allKeys.some((keyPath) => {
-          // return selectedField.some((keyPath) => {
-          console.log({ keyPath: keyPath })
-          const value = getNestedValue(row, keyPath)
-          console.log({ value: value })
-          return String(value).toLowerCase().includes(filterKey)
-        })
-      } else {
-        const value = getNestedValue(row, selectedField)
-        return value.toLocaleLowerCase().includes(filterKey)
-      }
+      const keysToSearch = selectedField === 'all' ? getAllKeys(row) : [selectedField]
+      return keysToSearch.some(keyPath => {
+        const value = getNestedValue(row, keyPath)
+        return String(value).toLocaleLowerCase().includes(filterKey)
+      })
     })
   }
   const key = sortKey.value
@@ -55,7 +36,6 @@ const filteredData = computed(() => {
       return (valA === valB ? 0 : valA > valB ? 1 : -1) * order
     })
   }
-  // console.log({ data: data })
   return data
 })
 

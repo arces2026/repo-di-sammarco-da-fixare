@@ -15,7 +15,7 @@ class Autore(models.Model):
 class Libro(models.Model):
     titolo = models.CharField(max_length=400)
     autore = models.ForeignKey(Autore, on_delete=models.CASCADE)
-    anno = models.CharField(max_length=12)
+    anno = models.IntegerField()
     genere = models.CharField(max_length=100)
     
     def __str__(self):

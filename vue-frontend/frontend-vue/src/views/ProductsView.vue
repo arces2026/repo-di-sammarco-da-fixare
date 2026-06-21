@@ -2,9 +2,7 @@
 import Grid from '@/components/Grid.vue'
 import ProductList from '@/components/ProductList.vue'
 import { onMounted, ref } from 'vue'
-import { useConstStore } from '@/stores/constStore'
 
-const constStore = useConstStore()
 
 const libri = ref([])
 const autori = ref([])
@@ -60,8 +58,6 @@ onMounted(() => {
         <label for="key">{{ key }}</label>
         <input type="radio" name="radio" v-model="selectedField" :value="key"/>
       </ul>
-      <!-- <label for="all">All</label>
-      <input id="all" type="radio" name="radio" /> -->
     </form>
 
     <Grid style="width: 45%" :data="libri" :columns="gridLibriColumns" :filter-key="searchQuery" :selected-field="selectedField">
