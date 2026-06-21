@@ -1,0 +1,133 @@
+# Docker Compose file per gestire un'applicazione full-stack con:
+# - MariaDB (database)
+# - Django (backend)
+# - Vue.js (frontend)
+
+# Definizione dei servizi (container) che compongono l'applicazione
+services:
+  # ============================================
+  # SERVIZIO 1: Database MariaDB
+  # ============================================
+  db:
+    # Immagine ufficiale di MariaDB versione 11
+    image: mariadb:11
+
+    # Nome personalizzato per il container (facilita i riferimenti)
+    container_name: mariadb
+
+    # Politica di restart: ricarica automaticamente a meno che non venga fermato manualmente
+    restart: unless-stopped
+
+    # File che contiene le variabili d'ambiente (es. DB_NAME, DB_USER, DB_PASSWORD)
+    # Attenzione: non committare .env nel repository!
+    env_file:
+      - .env
+
+    # Variabili d'ambiente specifiche per MariaDB
+    environment:
+      # Password per l'utente root di MariaDB
+      # NOTA: Deve corrispondere a DB_PASSWORD nel .env se DB_USER è "root"
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+
+      # Nome del database da creare all'avvio
+      MARIADB_DATABASE: ${DB_NAME}
+
+    # Mappatura delle porte:
+    # - Porta host (3307) → Porta container (3306)
+    # La 3306 è la porta standard di MariaDB, la 3307 evita conflitti con altri DB locali
+    ports:
+      - "3307:3306"
+
+    # Volume persistente per i dati del database
+    # I dati rimangono anche se il container viene rimosso
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+    # Healthcheck: verifica che il database sia effettivamente pronto a ricevere connessioni
+    healthcheck:
+      # Comando per verificare lo stato: si connette al DB e controlla l'inizializzazione di InnoDB
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s # Esegui il check ogni 10 secondi
+      timeout: 5s # Se il check impiega più di 5 secondi, considera fallito
+      retries: 5 # Numero di tentativi falliti prima di considerare il servizio "unhealthy"
+      start_period: 30s # Attendi 30 secondi all'avvio prima di iniziare i check
+
+  # ============================================
+  # SERVIZIO 2: Backend Django
+  # ============================================
+  backend:
+    # Build dell'immagine usando il Dockerfile nella cartella specificata
+    build:
+      context: ./django-backend
+
+    # Nome personalizzato per il container Django
+    container_name: django-backend
+
+    # Comando eseguito all'avvio del container:
+    # 1. wait-for-it.sh: attende che il database sia pronto (massimo 30 secondi)
+    # 2. Poi avvia il server di sviluppo Django sulla porta 8000
+    command:
+      ./wait-for-it.sh db:3306 -t 30 -- python manage.py runserver 0.0.0.0:8000
+
+    # Politica di restart: ricarica automaticamente a meno che non venga fermato manualmente
+    restart: unless-stopped
+
+    # File delle variabili d'ambiente (condiviso con db)
+    env_file:
+      - .env
+
+    # Variabili d'ambiente specifiche per Django
+    environment:
+      # Host del database (nome del servizio definito sopra)
+      # Django userà questo per connettersi al database
+      DB_HOST: db
+
+    # Volumi: monta il codice sorgente nel container
+    # Così le modifiche locali si riflettono immediatamente (hot-reload)
+    volumes:
+      - ./django-backend:/app
+
+    # Mappatura delle porte:
+    # - Porta host (8000) → Porta container (8000)
+    ports:
+      - "8000:8000"
+
+    # Dipendenze: questo servizio parte DOPO che db è sano
+    depends_on:
+      db:
+        condition: service_healthy # Aspetta che il healthcheck di db sia passato
+
+  # ============================================
+  # SERVIZIO 3: Frontend Vue.js
+  # ============================================
+  frontend:
+    # Build dell'immagine usando il Dockerfile nella cartella specificata
+    build:
+      context: ./frontend-vue
+
+    # Nome personalizzato per il container Vue
+    container_name: frontend-vue
+
+    # Mappatura delle porte:
+    # - Porta host (8080) → Porta container (80)
+    # Il container espone la porta 80 perché usa Nginx per servire i file statici
+    ports:
+      - "8080:80"
+
+    # Monta il file nginx.conf per configurare Nginx (SOPPRIME la configurazione predefinita)
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro # :ro = read-only per sicurezz
+
+    # Dipendenze: questo servizio parte DOPO backend
+    # Nota: non usa condition: service_healthy perché Django non ha un healthcheck
+    depends_on:
+      - backend
+
+# ============================================
+# VOLUMI PERSISTENTI
+# ============================================
+volumes:
+  # Volume per i dati di MariaDB
+  # Questo garantisce che i dati del database sopravvivano alla rimozione del container
+  mariadb_data:
+    # driver: local (default) - opzionale, specifica il driver di storage

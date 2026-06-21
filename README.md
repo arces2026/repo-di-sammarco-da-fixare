@@ -1,23 +1,27 @@
 # 🚀 Progetto Integrato: Vue + Django
 
-Questa è la documentazione principale per il progetto che combina un frontend **Vue.js** e un backend **Django REST Framework**, orchestrati tramite **Docker**.
+Questa è la documentazione principale per il progetto che combina un frontend
+**Vue.js** e un backend **Django REST Framework**, orchestrati tramite
+**Docker**.
 
 ## 📋 Indice
 
-* [Struttura del Progetto](#-struttura-del-progetto)
-* [Installazione e Avvio](#-installazione-e-avvio-con-docker)
-* [Comandi Docker Utili](#comandi-docker-utili)
-* [Debug e Troubleshooting](#-debug-e-troubleshooting)
+- [Struttura del Progetto](#-struttura-del-progetto)
+- [Installazione e Avvio](#-installazione-e-avvio-con-docker)
+- [Comandi Docker Utili](#comandi-docker-utili)
+- [Debug e Troubleshooting](#-debug-e-troubleshooting)
 
 ---
 
 ## 📁 Struttura del Progetto
 
 ```text
-VUE-DJANGO-FOLDER/
+repo-di-sammarco-da-fixare/
 ├── django-backend/      # Backend Django (API)
-├── vue-frontend/        # Frontend Vue.js (Vite)
+├── frontend-vue/        # Frontend Vue.js (Vite)
 ├── docker-compose.yml   # Orchestrazione dei container
+├── .dockerignore        # file da non caricare nei container
+├── .gitignore           # file da non caricare nel repo remoto
 └── .env                 # Variabili d'ambiente (DB, ecc.)
 
 ```
@@ -35,7 +39,8 @@ cd MONO-REPO-DJANGO-VUE
 
 ### 2. Configura le Variabili d'Ambiente
 
-Crea un file `.env` nella **root del progetto** (dove si trova `docker-compose.yml`):
+Crea un file `.env` nella **root del progetto** (dove si trova
+`docker-compose.yml`):
 
 ```bash
 # .env
@@ -50,7 +55,9 @@ DB_PASSWORD=********
 MARIADB_ROOT_PASSWORD=********
 ```
 
-> **⚠️ IMPORTANTE**: Sostituisci `********` con una password sicura per l'ambiente di produzione. Il file `.env` NON deve essere committato nel repository (aggiungilo al `.gitignore`).
+> **⚠️ IMPORTANTE**: Sostituisci `********` con una password sicura per
+> l'ambiente di produzione. Il file `.env` NON deve essere committato nel
+> repository (aggiungilo al `.gitignore`).
 
 ### 3. Costruisci e Avvia i Container
 
@@ -83,6 +90,7 @@ docker exec -it django-backend python manage.py createsuperuser
 ```
 
 Segui le istruzioni per inserire:
+
 - **Username**: `admin` (o quello che preferisci)
 - **Email**: `admin@example.com`
 - **Password**: `admin123` (o una password sicura)
@@ -90,6 +98,7 @@ Segui le istruzioni per inserire:
 ### 6. Verifica che tutto funzioni
 
 Apri il browser e visita:
+
 - **Vue Home**: http://localhost:8080
 - **Admin Panel**: http://localhost:8000/admin/
 - **API Books**: http://localhost:8000/api/libri/
@@ -97,8 +106,8 @@ Apri il browser e visita:
 - **Register**: http://localhost:8000/api/register/
 
 ---
-[↑ torna su](#-indice)
-<a id='comandi-docker-utili'><a>
+
+[↑ torna su](#-indice) <a id='comandi-docker-utili'><a>
 
 ## 🛠️ Comandi Docker Utili
 
@@ -158,14 +167,31 @@ docker exec -it django-backend python manage.py shell
 
 ### Riavvio dopo Modifiche al Codice
 
-Il container è configurato con **hot-reload** grazie al volume montato (`./django-backend:/app`). Le modifiche al codice vengono rilevate automaticamente, ma in caso di problemi:
+Il container è configurato con **hot-reload** grazie al volume montato
+(`./django-backend:/app`). Le modifiche al codice vengono rilevate
+automaticamente, ma in caso di problemi:
 
 ```bash
 # Riavvia solo il backend
-docker-compose restart web
+docker-compose restart django-backend
 
 # Oppure ricostruisci tutto
 docker-compose up -d --build
+```
+
+### Comandi Vue
+
+```bash
+# Entra nella shell del container
+docker exec -it frontend-vue /bin/bash
+
+# Esegui comandi Vue senza entrare nel container
+docker exec -it frontend-vue npm <comando>
+
+# Esempi:
+docker exec -it frontend-vue npm run dev
+docker exec -it frontend-vue npm list
+
 ```
 
 [↑ Torna su](#-indice)
@@ -176,21 +202,27 @@ docker-compose up -d --build
 
 Se l'app non risponde, usa questi comandi per leggere i log in tempo reale:
 
-* **Per il Backend**: `docker-compose logs -f backend`
-* **Per il Frontend**: `docker-compose logs -f frontend`
+- **Per il Backend**: `docker-compose logs -f django-backend`
+- **Per il Frontend**: `docker-compose logs -f frontend-vue`
 
 ### Entrare nei container (Shell)
 
 Se hai bisogno di eseguire comandi all'interno dei container per debuggare:
 
-* **Backend**: `docker-compose exec backend bash`
-* **Frontend**: `docker-compose exec frontend sh`
+- **Backend**: `docker-compose exec django-backend bash`
+- **Frontend**: `docker-compose exec frontend-vue sh`
 
 ### Errori Comuni
 
-* **Porta occupata**: Se `8000` o `8080` sono occupate, controlla i processi attivi sul tuo PC (`netstat -ano | findstr :8000`).
-* **Database non connesso**: Verifica che il container `mariadb` sia attivo (`docker-compose ps`) e che le variabili nel `.env` corrispondano a quelle in `settings.py`.
-* **CORS**: Se il frontend non comunica col backend, verifica in `django-backend/bookshelf/settings.py` che `CORS_ALLOWED_ORIGINS` includa l'URL del frontend.
+- **Porta occupata**: Se `8000` o `8080` sono occupate, controlla i processi
+  attivi sul tuo PC (`netstat -ano | findstr :8000`).
+- **Database non connesso**: Verifica che il container `mariadb` sia attivo
+  (`docker-compose ps`) e che le variabili nel `.env` corrispondano a quelle in
+  `settings.py`.
+- **CORS**: Se il frontend non comunica col backend, verifica in
+  `django-backend/bookshelf/settings.py` che `CORS_ALLOWED_ORIGINS` includa
+  l'URL del frontend.
 
 ---
+
 [↑ Torna su](#-indice)
