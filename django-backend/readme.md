@@ -121,6 +121,298 @@ MONO-REPO-DJANGO-VUE/
 [↑ torna su](#-indice)
 <a id='gestione-del-database'><a>
 
+
+---
+
+## 🐳 Installazione e Avvio con Docker
+
+Questa sezione ti guida attraverso l'installazione e l'avvio dell'intero stack (backend Django + MariaDB) utilizzando Docker e Docker Compose.
+
+### 1. Clonare il Repository
+
+```bash
+# Clona il repository
+git clone https://github.com/[tuo-username]/[nome-del-repository].git
+
+# Entra nella directory del progetto
+cd [nome-del-repository]
+```
+
+### 2. Configurare le Variabili d'Ambiente
+
+Crea un file `.env` nella root del progetto con le seguenti variabili:
+
+```bash
+# Crea il file .env
+touch .env
+```
+
+Aggiungi queste variabili al file `.env`:
+
+```env
+# Database Configuration
+DB_NAME=vue_django
+DB_USER=root
+DB_PASSWORD=your_secure_password_here
+DB_HOST=db # <--- nome del servizio nel docker-compose.yml
+DB_PORT=3306
+
+# MariaDB Root Password (same as DB_PASSWORD per semplicità)
+MARIADB_ROOT_PASSWORD=your_secure_password_here
+MARIADB_DATABASE=vue_django
+
+# Django Settings
+DJANGO_SECRET_KEY=your-secret-key-here-change-in-production
+DJANGO_DEBUG=True
+DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
+
+# JWT Settings
+JWT_ACCESS_TOKEN_LIFETIME=60  # minutes
+JWT_REFRESH_TOKEN_LIFETIME=1440  # minutes (24 hours)
+```
+
+> **⚠️ IMPORTANTE**: Sostituisci `your_secure_password_here` con una password sicura e `your-secret-key-here` con una chiave segreta unica. In produzione, usa chiavi generate casualmente.
+
+### 3. Avviare i Container
+
+#### Avvio in Background (Modalità Detached)
+
+```bash
+# Costruisci le immagini e avvia i container in background
+docker-compose up -d --build
+```
+
+#### Avvio con Log in Tempo Reale (Modalità Attached)
+
+```bash
+# Costruisci e avvia mostrando i log in console
+docker-compose up --build
+```
+
+Premi `Ctrl+C` per fermare i container in questa modalità.
+
+### 4. Verificare lo Stato dei Container
+
+```bash
+# Controlla che tutti i container siano in esecuzione
+docker-compose ps
+
+# Dovresti vedere qualcosa simile a:
+# NAME                IMAGE                   STATUS
+# django-backend      django-backend_web      Up 0.0.0.0:8000->8000/tcp
+# mariadb             mariadb:11              Up 0.0.0.0:3307->3306/tcp
+```
+
+### 5. Applicare le Migrazioni al Database
+
+```bash
+# Applica le migrazioni iniziali
+docker exec -it django-backend python manage.py migrate
+
+# Output atteso:
+# Operations to perform:
+#   Apply all migrations: admin, auth, catalog, contenttypes, sessions
+#   Running migrations:
+#     Applying contenttypes.0001_initial... OK
+#     Applying auth.0001_initial... OK
+#     ...
+```
+
+### 6. Creare un Superutente (Admin)
+
+```bash
+# Crea un utente amministratore
+docker exec -it django-backend python manage.py createsuperuser
+
+# Segui le istruzioni interattive:
+# Username (leave blank to use 'root'): admin
+# Email address: admin@example.com
+# Password: ********
+# Password (again): ********
+# Superuser created successfully.
+```
+
+### 7. Popolare il Database con Dati di Test (Opzionale)
+
+Se hai un file di dump o dati di test:
+
+```bash
+# Carica dati di test da un file fixture
+docker exec -it django-backend python manage.py loaddata initial_data.json
+
+# Oppure usa il comando per caricare dati di esempio
+docker exec -it django-backend python manage.py shell -c "
+from catalog.models import Autore, Libro
+autore = Autore.objects.create(nome='J.R.R.', cognome='Tolkien')
+Libro.objects.create(titolo='Il Signore degli Anelli', anno=1954, genere='Fantasy', autore=autore)
+print('Dati di test creati con successo!')
+"
+```
+
+### 8. Accedere all'Applicazione
+
+| Servizio | URL | Descrizione |
+|----------|-----|-------------|
+| **API Backend** | http://localhost:8000/ | Endpoint dell'API Django (404 dopo la creazione del progetto è normale) |
+| **Admin Panel** | http://localhost:8000/admin/ | Pannello di amministrazione Django |
+| **API Docs** | http://localhost:8000/api/v1 | Root dell'API |
+| **Health Check** | http://localhost:8000/health/ | Verifica stato dell'applicazione (non implementato) | 
+
+### 9. Comandi Utili per la Gestione dei Container
+
+#### Fermare i Container
+
+```bash
+# Ferma tutti i container
+docker-compose down
+
+# Ferma e rimuovi anche i volumi (cancella i dati del database)
+docker-compose down -v
+```
+
+#### Riavvio dei Container
+
+```bash
+# Riavvio tutti i container
+docker-compose restart
+
+# Riavvio solo il backend
+docker-compose restart web
+
+# Riavvio solo il database
+docker-compose restart mariadb
+```
+
+#### Visualizzare i Log
+
+```bash
+# Visualizza tutti i log
+docker-compose logs
+
+# Visualizza solo i log del backend
+docker-compose logs web
+
+# Visualizza gli ultimi 100 log e segui nuovi log in tempo reale
+docker-compose logs -f --tail=100 web
+
+# Visualizza i log del database
+docker-compose logs mariadb
+```
+
+#### Eseguire Comandi nei Container
+
+```bash
+# Apri una shell interattiva nel container backend
+docker exec -it django-backend bash
+
+# Esegui un comando singolo nel backend
+docker exec -it django-backend python manage.py shell
+
+# Connettiti al database MariaDB
+docker exec -it mariadb mariadb -u root -p
+# Inserisci la password configurata nel .env
+```
+
+### 10. Verificare che tutto funzioni
+
+#### Test dell'API con curl
+
+```bash
+# Verifica che l'API risponda
+curl http://localhost:8000/api/v1/autori/
+
+# Dovresti ricevere una risposta JSON (anche vuota se non ci sono autori)
+# []
+```
+
+#### Test dell'Admin Panel
+
+1. Apri il browser su http://localhost:8000/admin/
+2. Accedi con le credenziali del superutente create al punto 6
+3. Dovresti vedere il pannello di amministrazione Django
+
+#### Test del Database
+
+```bash
+# Verifica la connessione al database
+docker exec -it django-backend python manage.py dbshell
+
+# Esegui una query di test
+SHOW TABLES;
+# Dovresti vedere le tabelle create da Django
+```
+
+### 11. Stop e Pulizia Completa
+
+Quando hai finito di lavorare:
+
+```bash
+# Ferma e rimuovi tutti i container
+docker-compose down
+
+# Rimuovi anche i volumi (ATTENZIONE: cancella tutti i dati)
+docker-compose down -v
+
+# Rimuovi le immagini non utilizzate (opzionale)
+docker system prune -f
+
+# Rimuovi anche le immagini specifiche del progetto
+docker rmi django-backend_web
+```
+
+
+### Tempi di Avvio Stimati
+
+| Fase | Tempo stimato |
+|------|---------------|
+| Download immagini Docker | 2-5 minuti (primo avvio) |
+| Build del container backend | 1-3 minuti |
+| Avvio dei container | 10-30 secondi |
+| Migrazioni database | 10-20 secondi |
+| **Totale primo avvio** | **~5-10 minuti** |
+| **Avvio successivo** | **~30-60 secondi** |
+
+---
+
+## 🔄 Flusso di Sviluppo Tipico con Docker
+
+### Per sviluppatori che lavorano con il backend
+
+```bash
+# 1. Avvia i container in background
+docker-compose up -d
+
+# 2. Applica migrazioni (se hai modificato i modelli)
+docker exec -it django-backend python manage.py makemigrations
+docker exec -it django-backend python manage.py migrate
+
+# 3. Modifica il codice localmente (i cambiamenti si riflettono automaticamente)
+
+# 4. Esegui i test
+docker exec -it django-backend python manage.py test
+
+# 5. Visualizza i log in tempo reale durante lo sviluppo
+docker-compose logs -f web
+```
+
+### Per sviluppatori che lavorano con il frontend
+
+Se stai sviluppando anche il frontend Vue, assicurati che le impostazioni CORS siano configurate correttamente:
+
+```python
+# In settings.py
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',  # Vite default port
+    'http://localhost:8080',  # Vue CLI default port
+]
+
+# O per sviluppo (meno sicuro ma più pratico)
+CORS_ALLOW_ALL_ORIGINS = True  # Solo per sviluppo!
+```
+
+---
+[↑ torna su](#-indice)
+
 ## 🗄️ Gestione del Database
 
 ### Accesso diretto a MariaDB
@@ -449,6 +741,7 @@ kill -9 <PID>
 **Problema**: Django non riesce a connettersi al database.
 
 **Soluzione**:
+
 ```bash
 # Verifica che MariaDB sia in esecuzione
 docker ps | grep mariadb
@@ -460,11 +753,46 @@ docker logs mariadb
 docker exec -it django-backend python -c "import os; print(os.getenv('DB_HOST'))"
 ```
 
+### Errore: "env: 'bash\r': No such file or directory"
+
+**Problema**: I file script (come `wait-for-it.sh`) hanno terminazioni di riga Windows (CRLF) invece di Unix (LF). Questo errore si verifica quando si esegue uno script con shebang `#!/usr/bin/env bash` su un sistema Linux/Docker, e il carattere `\r` (carriage return) viene interpretato come parte del nome dell'interprete.
+
+**Soluzione**:
+
+```bash
+# Converti il file da formato Windows (CRLF) a Unix (LF)
+dos2unix wait-for-it.sh
+
+# Oppure usa sed (disponibile su tutti i sistemi)
+sed -i 's/\r$//' wait-for-it.sh
+
+# Verifica la conversione (non dovresti vedere ^M alla fine delle righe)
+cat -v wait-for-it.sh
+```
+
+**Prevenzione**: Per evitare questo problema in futuro, configura Git per gestire correttamente le terminazioni di riga:
+
+```bash
+# Imposta Git per convertire automaticamente in LF al checkout
+git config --global core.autocrlf input
+
+# O per questo repository specifico
+git config core.autocrlf input
+```
+
+Puoi anche aggiungere questa conversione al Dockerfile per correggere automaticamente il file durante la build:
+
+```dockerfile
+# Dopo COPY . .
+RUN sed -i 's/\r$//' /app/wait-for-it.sh
+```
+
 ### Errore: "ModuleNotFoundError: No module named 'catalog'"
 
 **Problema**: Django non trova l'applicazione.
 
 **Soluzione**:
+
 ```bash
 # Verifica che 'catalog' sia in INSTALLED_APPS
 docker exec -it django-backend python manage.py shell -c "import django; print(django.apps.apps.get_app_config('catalog'))"
