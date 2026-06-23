@@ -77,4 +77,8 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
 }
+
+form {
+  background-color: aqua;
+}
 </style>

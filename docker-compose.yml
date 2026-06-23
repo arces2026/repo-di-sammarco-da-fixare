@@ -97,29 +97,61 @@ services:
       db:
         condition: service_healthy # Aspetta che il healthcheck di db sia passato
 
+  # # ============================================
+  # # SERVIZIO 3: Frontend Vue.js
+  # # ============================================
+  # frontend:
+  #   # Build dell'immagine usando il Dockerfile nella cartella specificata
+  #   build:
+  #     context: ./frontend-vue
+
+  #   # Nome personalizzato per il container Vue
+  #   container_name: frontend-vue
+
+  #   # Mappatura delle porte:
+  #   # - Porta host (8080) → Porta container (80)
+  #   # Il container espone la porta 80 perché usa Nginx per servire i file statici
+  #   ports:
+  #     - "8080:80"
+
+  #   # Monta il file nginx.conf per configurare Nginx (SOPPRIME la configurazione predefinita)
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro # :ro = read-only per sicurezz
+
+  #   # Dipendenze: questo servizio parte DOPO backend
+  #   # Nota: non usa condition: service_healthy perché Django non ha un healthcheck
+  #   depends_on:
+  #     - backend
+
   # ============================================
-  # SERVIZIO 3: Frontend Vue.js
+  # SERVIZIO 3: Frontend Vue - DEVELOPMENT MODE
   # ============================================
-  frontend:
-    # Build dell'immagine usando il Dockerfile nella cartella specificata
+  frontend-dev:
     build:
       context: ./frontend-vue
+      target: development
+    container_name: frontend-vue-dev
+    ports:
+      - "8080:5173"
+    volumes:
+      - ./frontend-vue:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
 
-    # Nome personalizzato per il container Vue
-    container_name: frontend-vue
-
-    # Mappatura delle porte:
-    # - Porta host (8080) → Porta container (80)
-    # Il container espone la porta 80 perché usa Nginx per servire i file statici
+  # ============================================
+  # SERVIZIO 4: Frontend Vue - PRODUCTION MODE
+  # ============================================
+  frontend-prod:
+    build:
+      context: ./frontend-vue
+      target: production
+    container_name: frontend-vue-prod
     ports:
       - "8080:80"
-
-    # Monta il file nginx.conf per configurare Nginx (SOPPRIME la configurazione predefinita)
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro # :ro = read-only per sicurezz
-
-    # Dipendenze: questo servizio parte DOPO backend
-    # Nota: non usa condition: service_healthy perché Django non ha un healthcheck
     depends_on:
       - backend
 
