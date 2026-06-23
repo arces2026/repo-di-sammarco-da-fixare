@@ -53,7 +53,7 @@ onMounted(() => {
 <template>
   <main class="main">
     <form id="search">
-      Cerca <input name="query" v-model="searchQuery" />
+      Cerca <input id='search-input' name="query" v-model="searchQuery" />
       <ul v-for="key in radioSelection" :key="key">
         <label for="key">{{ key }}</label>
         <input type="radio" name="radio" v-model="selectedField" :value="key"/>
@@ -79,6 +79,24 @@ onMounted(() => {
 }
 
 form {
-  background-color: aqua;
+  background-color: #42b983;
+  width: 35%;
+  margin: 30px auto;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  text-transform: capitalize;
+}
+#search-input {
+  width: 40%;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+input {
+  margin: 5px;
 }
 </style>
