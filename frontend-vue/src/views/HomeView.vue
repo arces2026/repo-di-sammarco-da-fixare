@@ -4,6 +4,8 @@ import Mouse from '@/components/Mouse.vue';
 </script>
 
 <template>
-    <HomeComponent></HomeComponent>
+    <HomeComponent
+        
+    ></HomeComponent>
     <!-- <Mouse></Mouse> -->
 </template>
