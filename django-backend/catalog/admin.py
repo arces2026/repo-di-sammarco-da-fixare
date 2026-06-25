@@ -19,5 +19,5 @@ class LibroAdmin(admin.ModelAdmin):
 class ScarpeAdmin(admin.ModelAdmin):
     list_display = ["nome", "prezzo", "descrizione", "categoria", "materiale", 'disponibilita', 'taglie_disponibili', 'immagine_url', 'sconto',]
     list_filter = ["categoria"]
-    list_search = ['categoria']
+    search_fields = ['categoria', 'nome']
     list_editable = ['sconto']
