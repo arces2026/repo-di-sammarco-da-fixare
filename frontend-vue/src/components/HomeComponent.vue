@@ -3,7 +3,7 @@
     <ProductCard v-for="product in products">
       <template #image>
         <div class="badge-wrapper">
-          <span class="badge">Sconto 20%</span>
+          <span class="badge">sconto {{ product.sconto }} %</span>
           <img
             :src="product.immagine_url"
             alt="Scarpe Nike"
@@ -25,7 +25,7 @@
           <span class="new-price">{{ product.prezzo_scontato }}</span>
          
         </div>
-        <button class="add-btn" @click="addToCart">Aggiungi</button>
+        <button class="add-btn" @click="cartStore.addToCart">Aggiungi</button>
       </template>
     </ProductCard>
   </main>
@@ -35,6 +35,11 @@
 import { onMounted, ref } from 'vue'
 import ProductCard from '@/components/ProductCard.vue'
 import getProducts from '@/services/productService'
+import { useCartStore } from '@/stores/cartStore';
+
+const cartStore = useCartStore();
+
+console.log({cart: cartStore.totalItems})
 
 defineProps({
   nome: String,
@@ -80,7 +85,7 @@ onMounted(async () => {
   } finally {
     loading.value = false
   }
-  console.log(products.value)
+  // console.log(products.value)
 })
 </script>
 
