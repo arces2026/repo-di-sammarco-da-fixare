@@ -12,13 +12,13 @@
 
 ### Flow con Django REST Framework
 7. [Installazione DRF](#7-installazione-drf)
-8. [Model](#8-model-modelspy-2)
-9. [Migrazione](#9-migrazione-2)
+8. [Model DRF](#8-model-drf-modelspy)
+9. [Migrazione DRF](#9-migrazione-drf)
 10. [Serializer](#10-serializer-serializerspy)
 11. [ViewSet](#11-viewset-viewspy)
-12. [Router e URL dell'app](#12-router-e-url-dell%27app-nome_appurlspy)
-13. [URL del progetto](#13-url-del-progetto-progettourlspy-2)
-14. [Risultato](#14-risultato-2)
+12. [Router e URL dell app](#12-router-e-url-dell-app-nome_appurlspy)
+13. [URL del progetto DRF](#13-url-del-progetto-drf-progettourlspy)
+14. [Risultato DRF](#14-risultato-drf)
 
 ---
 
@@ -158,7 +158,7 @@ INSTALLED_APPS = [
 
 ---
 
-## 8. Model (`models.py`)
+## 8. Model DRF (`models.py`)
 
 [↑ Torna all'indice](#indice)
 
@@ -174,7 +174,7 @@ class Articolo(models.Model):
 
 ---
 
-## 9. Migrazione
+## 9. Migrazione DRF
 
 [↑ Torna all'indice](#indice)
 
@@ -221,7 +221,7 @@ class ArticoloViewSet(viewsets.ModelViewSet):
 
 ---
 
-## 12. Router e URL dell'app (`nome_app/urls.py`)
+## 12. Router e URL dell app (`nome_app/urls.py`)
 
 [↑ Torna all'indice](#indice)
 
@@ -239,7 +239,7 @@ urlpatterns = router.urls
 
 ---
 
-## 13. URL del progetto (`progetto/urls.py`)
+## 13. URL del progetto DRF (`progetto/urls.py`)
 
 [↑ Torna all'indice](#indice)
 
@@ -253,7 +253,7 @@ urlpatterns = [
 
 ---
 
-## 14. Risultato
+## 14. Risultato DRF
 
 [↑ Torna all'indice](#indice)
 
