@@ -1,6 +1,6 @@
 from rest_framework import serializers
 # from django.contrib.auth.models import User
-from .models import Libro, Autore
+from .models import Libro, Autore, Scarpe
 
 
 class AutoreSerializer(serializers.ModelSerializer):
@@ -25,3 +25,8 @@ class LibroReadSerializer(serializers.ModelSerializer):
         fields = ["id", "titolo", "anno", "genere", "autore"]
 
 
+class ScarpeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Scarpe
+        fields = "__all__"

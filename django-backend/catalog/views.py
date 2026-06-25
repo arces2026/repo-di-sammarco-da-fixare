@@ -1,11 +1,12 @@
 from django.contrib.auth.forms import UsernameField
 from django.shortcuts import render
 from rest_framework import viewsets, status
-from .models import Autore, Libro
+from .models import Autore, Libro, Scarpe
 from .serializers import (
     AutoreSerializer,
     LibroReadSerializer,
     LibroWriteSerializer,
+    ScarpeSerializer,
 )
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from rest_framework.response import Response
@@ -14,6 +15,17 @@ from django.contrib.auth.models import User
 
 
 # Create your views here.
+class ScarpeViewSet(viewsets.ModelViewSet):
+    queryset = Scarpe.objects.all()
+
+    def get_serializer_class(self):
+        # For write operations (create, update, partial_update, destroy)
+        if self.action in ["create", "update", "partial_update"]:
+            return ScarpeSerializer
+        # For read operations (list, retrieve)
+        return ScarpeSerializer
+
+
 class LibroViewSet(viewsets.ModelViewSet):
     queryset = Libro.objects.all()
     # serializer_class = LibroSerializer
@@ -82,7 +94,7 @@ class AutoreViewSet(viewsets.ModelViewSet):
 #     Register a new user
 #     '''
 #     serializer = UserRegistrationSerializer(data=request.data)
-    
+
 #     if serializer.is_valid():
 #         user = serializer.save()
 #         return Response({
@@ -90,6 +102,5 @@ class AutoreViewSet(viewsets.ModelViewSet):
 #             'user_id': user.id,
 #             'username': user.username
 #         }, status=status.HTTP_201_CREATED )
-        
+
 #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    

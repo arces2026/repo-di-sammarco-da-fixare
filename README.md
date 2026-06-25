@@ -61,10 +61,24 @@ MARIADB_ROOT_PASSWORD=********
 
 ### 3. Costruisci e Avvia i Container
 
-```bash
-# Costruisci le immagini e avvia i container in background
-docker-compose up -d --build
+#### ATTENZIONE!! Questo progetto sfrutta l'HMR (hot reload) per il frontend Vue
 
+Avviare i container nel modo seguente:
+
+### in sviluppo
+
+```bash
+# avvia e costruisci i containers usando i SERVICE name (non i nomi dei container)
+docker compose up -d --build db backend frontend-dev
+# Verifica che i container siano in esecuzione
+docker ps
+```
+
+### in produzione
+
+```bash
+# avvia e costruisci i containers usando i SERVICE name (non i nomi dei container)
+docker compose up -d --build db backend frontend-prod
 # Verifica che i container siano in esecuzione
 docker ps
 ```
@@ -73,7 +87,8 @@ Dovresti vedere tre container attivi:
 
 - `django-backend` - Django application (porta 8000)
 - `mariadb` - Database MariaDB (porta 3306)
-- `vue-frontend` - Vue application (porta 8080)
+- `frontend-vue-dev` - Vue application (porta 8080) in sviluppo
+- `frontend-vue-prod` - Vue application (porta 8080) in produzione
 
 ### 4. Applica le Migrazioni del Database
 
