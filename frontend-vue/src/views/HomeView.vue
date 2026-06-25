@@ -5,5 +5,5 @@ import Mouse from '@/components/Mouse.vue';
 
 <template>
     <HomeComponent></HomeComponent>
-    <Mouse></Mouse>
+    <!-- <Mouse></Mouse> -->
 </template>

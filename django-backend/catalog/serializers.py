@@ -26,7 +26,11 @@ class LibroReadSerializer(serializers.ModelSerializer):
 
 
 class ScarpeSerializer(serializers.ModelSerializer):
-
+    prezzo_scontato = serializers.ReadOnlyField()  # o SerializerMethodField() definendo però il metodo
+    sconto = serializers.FloatField()
+    prezzo = serializers.FloatField()
+    
     class Meta:
         model = Scarpe
         fields = "__all__"
+

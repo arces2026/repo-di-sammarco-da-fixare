@@ -3,7 +3,6 @@ import Grid from '@/components/Grid.vue'
 import ProductList from '@/components/ProductList.vue'
 import { onMounted, ref } from 'vue'
 
-
 const libri = ref([])
 const autori = ref([])
 
@@ -12,7 +11,7 @@ const radioSelection = ['titolo', 'anno', 'genere', 'autore.nome', 'all']
 const gridAutoriColumns = ['nome', 'nazione']
 const searchQuery = ref('')
 const selectedField = ref('all')
-console.log({selectedField: selectedField.value})
+console.log({ selectedField: selectedField.value })
 onMounted(() => {
   fetch('http://localhost:8000/api/v1/libri/')
     .then((response) => {
@@ -53,14 +52,21 @@ onMounted(() => {
 <template>
   <main class="main">
     <form id="search">
-      Cerca <input id='search-input' name="query" v-model="searchQuery" />
+      Cerca <input id="search-input" name="query" v-model="searchQuery" />
       <ul v-for="key in radioSelection" :key="key">
         <label for="key">{{ key }}</label>
-        <input type="radio" name="radio" v-model="selectedField" :value="key"/>
+        <input type="radio" name="radio" v-model="selectedField" :value="key" />
       </ul>
     </form>
 
-    <Grid style="width: 45%" :data="libri" :columns="gridLibriColumns" :filter-key="searchQuery" :selected-field="selectedField">
+    <ProductList></ProductList>
+    <Grid
+      style="width: 45%"
+      :data="libri"
+      :columns="gridLibriColumns"
+      :filter-key="searchQuery"
+      :selected-field="selectedField"
+    >
     </Grid>
 
     <!-- <Grid

@@ -159,8 +159,8 @@ DB_PORT=3306
 
 # MariaDB Root Password (same as DB_PASSWORD per semplicità)
 MARIADB_ROOT_PASSWORD=your_secure_password_here
-MARIADB_DATABASE=vue_django
 
+<!-- le seguenti config non sono applicate al presente progetto -->
 # Django Settings
 DJANGO_SECRET_KEY=your-secret-key-here-change-in-production
 DJANGO_DEBUG=True

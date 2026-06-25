@@ -1,3 +1,91 @@
 <template>
-   <h1>Home</h1> 
+   <main class="grid">
+      <ProductCard v-for="product in products">
+         <template #image>
+            <div class="badge-wrapper">
+               <span class="badge">Sconto 20%</span>
+               <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Scarpe Nike" />
+            </div>
+         </template>
+
+         <template #content>
+            <span class="category">Calzature</span>
+            <h3 class="custom-title">{{ product.titolo }}</h3>
+            <p class="custom-desc">Comfort eccezionale e design iconico per le tue sessioni di corsa quotidiane.</p>
+         </template>
+
+         <template #footer>
+            <div class="price-container">
+               <span class="old-price">€120,00</span>
+               <span class="new-price">€96,00</span>
+            </div>
+            <button class="add-btn" @click="addToCart">Aggiungi</button>
+         </template>
+      </ProductCard>
+
+   </main>
 </template>
+
+<script setup>
+import { onMounted, ref } from 'vue';
+import ProductCard from '@/components/ProductCard.vue';
+import getProducts from '@/services/productService'
+
+const products = ref([])
+const error = ref(null)
+const loading = ref(true)
+
+onMounted(async () => {
+   try {
+      products.value = await getProducts()
+   } catch (err) {
+      error.value = "Impossibile caricare i prodotti."
+   } finally {
+      loading.value = false
+   }
+   console.log(products.value);
+})
+
+
+</script>
+
+<style scoped>
+
+.grid{
+   display: grid;
+   grid: auto-flow / repeat(3, 1fr);
+   gap: 20px;
+}
+
+.badge {
+   position: absolute;
+   left: 5px;
+   top: 5px;
+   color: rgb(245, 229, 229);
+   background-color: rgb(57, 113, 8);
+   border-radius: 10px;
+   font-size: 0.8em;
+   padding: 4px;
+}
+
+.add-btn {
+   padding: 10px;
+}
+
+.old-price {
+   font-size: 0.9rem;
+   color: #757575;
+   /* Grigio sbiadito */
+   text-decoration: line-through;
+   /* Barra il testo */
+   margin-right: 10px;
+}
+
+/* Stile per il nuovo prezzo */
+.new-price {
+   font-size: 1.25rem;
+   font-weight: bold;
+   color: #d32f2f;
+   /* Un rosso per l'offerta, oppure usa il verde/colore del tuo brand */
+}
+</style>
