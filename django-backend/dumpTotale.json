@@ -1,0 +1,1324 @@
+[
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2026-06-25T10:18:22.732Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "30",
+      "object_repr": "Sneakers Eco-Friendly in Canapa",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Sconto\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2026-06-25T10:18:22.745Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "29",
+      "object_repr": "Scarpe Ortopediche in Pelle",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Sconto\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2026-06-25T10:18:22.752Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "28",
+      "object_repr": "Pantofole in Pelle con Pelo",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Sconto\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2026-06-25T10:18:22.774Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "2",
+      "object_repr": "Derby Marroni Cuoio Artigianali",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Sconto\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2026-06-25T10:18:22.779Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "1",
+      "object_repr": "Oxford Classiche in Pelle Nera",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Sconto\"]}}]"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 3,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 3,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 3,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 3,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 2,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 2,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 2,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 2,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 4,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 4,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 4,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 4,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 5,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 5,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 5,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 5,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 6,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 6,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 6,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 6,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add autore",
+      "content_type": 7,
+      "codename": "add_autore"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change autore",
+      "content_type": 7,
+      "codename": "change_autore"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete autore",
+      "content_type": 7,
+      "codename": "delete_autore"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view autore",
+      "content_type": 7,
+      "codename": "view_autore"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add libro",
+      "content_type": 8,
+      "codename": "add_libro"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change libro",
+      "content_type": 8,
+      "codename": "change_libro"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete libro",
+      "content_type": 8,
+      "codename": "delete_libro"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view libro",
+      "content_type": 8,
+      "codename": "view_libro"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add scarpe",
+      "content_type": 9,
+      "codename": "add_scarpe"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change scarpe",
+      "content_type": 9,
+      "codename": "change_scarpe"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete scarpe",
+      "content_type": 9,
+      "codename": "delete_scarpe"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view scarpe",
+      "content_type": 9,
+      "codename": "view_scarpe"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$tZCHI4aVcApbLIeFGZYMjv$j0h2zCig/QYnNCpGYb/m30+OM79X3lF4gCm2+SYtccw=",
+      "last_login": "2026-06-26T17:51:35.598Z",
+      "is_superuser": true,
+      "username": "marco",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-06-24T13:38:54.934Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": { "app_label": "admin", "model": "logentry" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": { "app_label": "auth", "model": "group" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": { "app_label": "auth", "model": "permission" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": { "app_label": "auth", "model": "user" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": { "app_label": "contenttypes", "model": "contenttype" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": { "app_label": "sessions", "model": "session" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": { "app_label": "catalog", "model": "autore" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": { "app_label": "catalog", "model": "libro" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": { "app_label": "catalog", "model": "scarpe" }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "ajicghmtm0vcj9ila0kn0uva33shwml3",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSHlTV269xvIDANSNZCUdmX8dyXpQrfnnHtfLMC-lbD3tIaF2JkJdvplCPGR6hB0h3prPLa6rQvykfDDdn5tlJ6Xo_07KNDLWDtvVTbezyBw8s46CUlKhSS0N1Yp82VCUTaIMZmZNGoDKlLUWYjJs_cHwgM3TA:1wcNp1:ltSvBMIfIRY820dGl-QhHnzmc8RPo4UDwBx34Y4Ootg",
+      "expire_date": "2026-07-08T13:39:19.915Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "eapf67bmesu44o4a0udpy8wvfqmvhh0u",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSHlTV269xvIDANSNZCUdmX8dyXpQrfnnHtfLMC-lbD3tIaF2JkJdvplCPGR6hB0h3prPLa6rQvykfDDdn5tlJ6Xo_07KNDLWDtvVTbezyBw8s46CUlKhSS0N1Yp82VCUTaIMZmZNGoDKlLUWYjJs_cHwgM3TA:1wdAiF:XRq6jIZpSCaPYDhrYFnUfg6OH1Fni8QVwn0kVKyQ3bk",
+      "expire_date": "2026-07-10T17:51:35.612Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "flcqt21kijahoaxwfz7rjzv7p1oxda9c",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGln4E7ympOcM1q53jQPIkeKkQtwdIqWA9s3Me6mE61LT2mVOI6uzMurwuxHmh7QN8B3bbdJ5ass8kt4UvdOurxPL87K7fwcVe_3W3lHIYk_RusJ-gOLN4A2RUA4FuBjIKC4GMHi0GAO7gAiSPVuIRkS9P-5nOHA:1wbKR7:SvEK2UmwPmgKr-G5qb5Gtmyz2apgSin3ZDXfRlla6Sc",
+      "expire_date": "2026-07-05T15:50:17.368Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "xhb44brdbgq0874hk2snq0g44le177uz",
+    "fields": {
+      "session_data": ".eJxVjDEOwjAMAP_iGUVpiI3TkZ03VE7s0gJqpaadEH9HlTrAene6N3SyrUO3VVu6UaGFBk6_LEt52rQLfch0n12Zp3UZs9sTd9jqbrPa63q0f4NB6gAtoAbyGHNKzBnZvA8cy5lyz2QmZCmFzAn7JhihpIJUSJUbFgzRX-DzBciwNzc:1wZZjS:0GDAeHKhjBrC5a-vNJPrrFJm4qgE21IgnAEorHbkAcs",
+      "expire_date": "2026-06-30T19:45:58.826Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "zge31r9wapetmwpca1ebc93v27qu38xi",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSHlTV269xvIDANSNZCUdmX8dyXpQrfnnHtfLMC-lbD3tIaF2JkJdvplCPGR6hB0h3prPLa6rQvykfDDdn5tlJ6Xo_07KNDLWDtvVTbezyBw8s46CUlKhSS0N1Yp82VCUTaIMZmZNGoDKlLUWYjJs_cHwgM3TA:1wce30:R41TpHMumXArVUYNW3sM6I6LO8tBnb6dZFuRUXcAaV8",
+      "expire_date": "2026-07-09T06:58:50.105Z"
+    }
+  },
+  {
+    "model": "catalog.autore",
+    "pk": 1,
+    "fields": { "nome": "Dante Alighieri", "nazione": "Italia" }
+  },
+  {
+    "model": "catalog.autore",
+    "pk": 2,
+    "fields": { "nome": "Jane Austen", "nazione": "Inghilterra" }
+  },
+  {
+    "model": "catalog.autore",
+    "pk": 3,
+    "fields": { "nome": "Gabriel Garc??a M??rquez", "nazione": "Colombia" }
+  },
+  {
+    "model": "catalog.autore",
+    "pk": 4,
+    "fields": { "nome": "Haruki Murakami", "nazione": "Giappone" }
+  },
+  {
+    "model": "catalog.autore",
+    "pk": 5,
+    "fields": { "nome": "Virginia Woolf", "nazione": "Inghilterra" }
+  },
+  {
+    "model": "catalog.autore",
+    "pk": 6,
+    "fields": { "nome": "F??dor Dostoevskij", "nazione": "Russia" }
+  },
+  {
+    "model": "catalog.autore",
+    "pk": 7,
+    "fields": { "nome": "Isabel Allende", "nazione": "Cile" }
+  },
+  {
+    "model": "catalog.autore",
+    "pk": 8,
+    "fields": { "nome": "Franz Kafka", "nazione": "Repubblica Ceca" }
+  },
+  {
+    "model": "catalog.autore",
+    "pk": 9,
+    "fields": { "nome": "Toni Morrison", "nazione": "Stati Uniti" }
+  },
+  {
+    "model": "catalog.autore",
+    "pk": 10,
+    "fields": { "nome": "Jorge Luis Borges", "nazione": "Argentina" }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 1,
+    "fields": {
+      "titolo": "La Divina Commedia",
+      "autore": 1,
+      "anno": 1321,
+      "genere": "Epica"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 2,
+    "fields": {
+      "titolo": "Vita Nova",
+      "autore": 1,
+      "anno": 1295,
+      "genere": "Poesia"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 3,
+    "fields": {
+      "titolo": "De Vulgari Eloquentia",
+      "autore": 1,
+      "anno": 1305,
+      "genere": "Saggistica"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 4,
+    "fields": {
+      "titolo": "Orgoglio e Pregiudizio",
+      "autore": 2,
+      "anno": 1813,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 5,
+    "fields": {
+      "titolo": "Ragione e Sentimento",
+      "autore": 2,
+      "anno": 1811,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 6,
+    "fields": {
+      "titolo": "Emma",
+      "autore": 2,
+      "anno": 1815,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 7,
+    "fields": {
+      "titolo": "Cent'anni di Solitudine",
+      "autore": 3,
+      "anno": 1967,
+      "genere": "Realismo Magico"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 8,
+    "fields": {
+      "titolo": "L'Amore ai Tempi del Colera",
+      "autore": 3,
+      "anno": 1985,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 9,
+    "fields": {
+      "titolo": "Cronaca di una Morte Annunciata",
+      "autore": 3,
+      "anno": 1981,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 10,
+    "fields": {
+      "titolo": "Norwegian Wood",
+      "autore": 4,
+      "anno": 1987,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 11,
+    "fields": {
+      "titolo": "Kafka sulla Spiaggia",
+      "autore": 4,
+      "anno": 2002,
+      "genere": "Realismo Magico"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 12,
+    "fields": {
+      "titolo": "1Q84",
+      "autore": 4,
+      "anno": 2009,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 13,
+    "fields": {
+      "titolo": "La Signora Dalloway",
+      "autore": 5,
+      "anno": 1925,
+      "genere": "Modernismo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 14,
+    "fields": {
+      "titolo": "Gita al Faro",
+      "autore": 5,
+      "anno": 1927,
+      "genere": "Modernismo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 15,
+    "fields": {
+      "titolo": "Le Onde",
+      "autore": 5,
+      "anno": 1931,
+      "genere": "Modernismo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 16,
+    "fields": {
+      "titolo": "Delitto e Castigo",
+      "autore": 6,
+      "anno": 1866,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 17,
+    "fields": {
+      "titolo": "I Fratelli Karamazov",
+      "autore": 6,
+      "anno": 1880,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 18,
+    "fields": {
+      "titolo": "L'Idiota",
+      "autore": 6,
+      "anno": 1869,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 19,
+    "fields": {
+      "titolo": "La Casa degli Spiriti",
+      "autore": 7,
+      "anno": 1982,
+      "genere": "Realismo Magico"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 20,
+    "fields": {
+      "titolo": "Figlia della Fortuna",
+      "autore": 7,
+      "anno": 1999,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 21,
+    "fields": {
+      "titolo": "Paula",
+      "autore": 7,
+      "anno": 1994,
+      "genere": "Memorie"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 22,
+    "fields": {
+      "titolo": "La Metamorfosi",
+      "autore": 8,
+      "anno": 1915,
+      "genere": "Letteratura"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 23,
+    "fields": {
+      "titolo": "Il Processo",
+      "autore": 8,
+      "anno": 1925,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 24,
+    "fields": {
+      "titolo": "Il Castello",
+      "autore": 8,
+      "anno": 1926,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 25,
+    "fields": {
+      "titolo": "Amatissima",
+      "autore": 9,
+      "anno": 1987,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 26,
+    "fields": {
+      "titolo": "L'Occhio Pi?? Azzurro",
+      "autore": 9,
+      "anno": 1970,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 27,
+    "fields": {
+      "titolo": "Cantico di Salomone",
+      "autore": 9,
+      "anno": 1977,
+      "genere": "Romanzo"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 28,
+    "fields": {
+      "titolo": "Finzioni",
+      "autore": 10,
+      "anno": 1944,
+      "genere": "Racconti"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 29,
+    "fields": {
+      "titolo": "L'Aleph",
+      "autore": 10,
+      "anno": 1949,
+      "genere": "Racconti"
+    }
+  },
+  {
+    "model": "catalog.libro",
+    "pk": 30,
+    "fields": {
+      "titolo": "Il Giardino dei Sentieri che si Biforcano",
+      "autore": 10,
+      "anno": 1941,
+      "genere": "Racconti"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 1,
+    "fields": {
+      "nome": "Oxford Classiche in Pelle Nera",
+      "prezzo": "89.99",
+      "valuta": "EUR",
+      "descrizione": "Scarpe formali eleganti in pelle lucida, ideali per ufficio e cerimonie.",
+      "categoria": "Classiche",
+      "materiale": "Pelle bovina",
+      "disponibilita": true,
+      "taglie_disponibili": [39, 40, 41, 42, 43, 44],
+      "immagine_url": "https://picsum.photos/seed/oxford/400/400",
+      "sconto": "35.60"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 2,
+    "fields": {
+      "nome": "Derby Marroni Cuoio Artigianali",
+      "prezzo": "105.50",
+      "valuta": "EUR",
+      "descrizione": "Modello Derby in cuoio naturale, perfetto per un look smart-casual.",
+      "categoria": "Classiche",
+      "materiale": "Cuoio",
+      "disponibilita": true,
+      "taglie_disponibili": [40, 41, 42, 43],
+      "immagine_url": "https://picsum.photos/seed/derby/400/400",
+      "sconto": "25.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 3,
+    "fields": {
+      "nome": "Mocassini in Pelle Scamosciata",
+      "prezzo": "72.00",
+      "valuta": "EUR",
+      "descrizione": "Mocassini morbidi e leggeri, ideali per l'estate o per il tempo libero.",
+      "categoria": "Classiche",
+      "materiale": "Pelle scamosciata",
+      "disponibilita": false,
+      "taglie_disponibili": [38, 39, 40, 41],
+      "immagine_url": "https://picsum.photos/seed/mocassini/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 4,
+    "fields": {
+      "nome": "Ballerine Nere con Fiocco",
+      "prezzo": "45.00",
+      "valuta": "EUR",
+      "descrizione": "Ballerine classiche in pelle con fiocco decorativo, comode per tutti i giorni.",
+      "categoria": "Classiche",
+      "materiale": "Pelle",
+      "disponibilita": true,
+      "taglie_disponibili": [36, 37, 38, 39, 40],
+      "immagine_url": "https://picsum.photos/seed/ballerine/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 5,
+    "fields": {
+      "nome": "Converse Chuck Taylor All Star Bianche",
+      "prezzo": "65.00",
+      "valuta": "EUR",
+      "descrizione": "L'iconica sneaker in tela bianca con suola in gomma, un must-have senza tempo.",
+      "categoria": "Sneakers",
+      "materiale": "Tela",
+      "disponibilita": true,
+      "taglie_disponibili": [36, 37, 38, 39, 40, 41, 42, 43, 44],
+      "immagine_url": "https://picsum.photos/seed/converse/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 6,
+    "fields": {
+      "nome": "Stivaletti Chelsea Neri in Pelle",
+      "prezzo": "120.00",
+      "valuta": "EUR",
+      "descrizione": "Stivaletti alla caviglia con elastico laterale, eleganti e versatili.",
+      "categoria": "Stivali",
+      "materiale": "Pelle",
+      "disponibilita": true,
+      "taglie_disponibili": [40, 41, 42, 43, 44],
+      "immagine_url": "https://picsum.photos/seed/chelsea/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 7,
+    "fields": {
+      "nome": "Scarpe da Running Asfalto",
+      "prezzo": "95.00",
+      "valuta": "EUR",
+      "descrizione": "Scarpe leggere con ammortizzazione avanzata per la corsa su strada.",
+      "categoria": "Sneakers",
+      "materiale": "Tessuto tecnico / Gomma",
+      "disponibilita": true,
+      "taglie_disponibili": [38, 39, 40, 41, 42, 43, 44, 45],
+      "immagine_url": "https://picsum.photos/seed/running/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 8,
+    "fields": {
+      "nome": "Air Jordan 1 Mid",
+      "prezzo": "140.00",
+      "valuta": "EUR",
+      "descrizione": "Sneaker alta da basket con dettagli iconici e colori accesi.",
+      "categoria": "Sneakers",
+      "materiale": "Pelle e sintetico",
+      "disponibilita": false,
+      "taglie_disponibili": [40, 41, 42, 43, 44, 45],
+      "immagine_url": "https://picsum.photos/seed/jordan/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 9,
+    "fields": {
+      "nome": "Vans Old Skool Nere",
+      "prezzo": "70.00",
+      "valuta": "EUR",
+      "descrizione": "Sneaker skateboard con la classica striscia laterale, suola in gomma vulcanizzata.",
+      "categoria": "Sneakers",
+      "materiale": "Tela e camoscio",
+      "disponibilita": true,
+      "taglie_disponibili": [37, 38, 39, 40, 41, 42, 43],
+      "immagine_url": "https://picsum.photos/seed/vans/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 10,
+    "fields": {
+      "nome": "Sneaker Bassi in Pelle Bianca",
+      "prezzo": "155.00",
+      "valuta": "EUR",
+      "descrizione": "Modello minimalista in pelle bianca, elegante e adatto a qualsiasi outfit.",
+      "categoria": "Sneakers",
+      "materiale": "Pelle",
+      "disponibilita": true,
+      "taglie_disponibili": [39, 40, 41, 42, 43, 44],
+      "immagine_url": "https://picsum.photos/seed/sneakerbassi/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 11,
+    "fields": {
+      "nome": "Scarpe da Trekking Impermeabili",
+      "prezzo": "130.00",
+      "valuta": "EUR",
+      "descrizione": "Scarpe robuste con suola Vibram e membrana impermeabile per sentieri difficili.",
+      "categoria": "Outdoor",
+      "materiale": "Nylon e gomma",
+      "disponibilita": true,
+      "taglie_disponibili": [40, 41, 42, 43, 44, 45, 46],
+      "immagine_url": "https://picsum.photos/seed/trekking/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 12,
+    "fields": {
+      "nome": "Slip-on Estivi in Tela",
+      "prezzo": "35.00",
+      "valuta": "EUR",
+      "descrizione": "Scarpe senza lacci, leggere e traspiranti, perfette per la spiaggia o il relax.",
+      "categoria": "Lifestyle",
+      "materiale": "Tela",
+      "disponibilita": true,
+      "taglie_disponibili": [36, 37, 38, 39, 40, 41],
+      "immagine_url": "https://picsum.photos/seed/slipon/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 13,
+    "fields": {
+      "nome": "Stivaletto alla Coscia in Pelle Nera",
+      "prezzo": "210.00",
+      "valuta": "EUR",
+      "descrizione": "Stivale alto e aderente con tacco medio, perfetto per un look audace.",
+      "categoria": "Stivali",
+      "materiale": "Pelle",
+      "disponibilita": true,
+      "taglie_disponibili": [36, 37, 38, 39, 40],
+      "immagine_url": "https://picsum.photos/seed/stivaletto/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 14,
+    "fields": {
+      "nome": "Stivaletti con Tacco a Spillo",
+      "prezzo": "89.90",
+      "valuta": "EUR",
+      "descrizione": "Stivaletti alla caviglia con tacco alto, eleganti per serate e occasioni speciali.",
+      "categoria": "Stivali",
+      "materiale": "Pelle scamosciata",
+      "disponibilita": false,
+      "taglie_disponibili": [37, 38, 39],
+      "immagine_url": "https://picsum.photos/seed/taccospillo/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 15,
+    "fields": {
+      "nome": "Moon Boot Invernali",
+      "prezzo": "160.00",
+      "valuta": "EUR",
+      "descrizione": "Stivali imbottiti termici, impermeabili, ideali per la neve e le temperature rigide.",
+      "categoria": "Stivali",
+      "materiale": "Nylon e gomma",
+      "disponibilita": true,
+      "taglie_disponibili": [38, 39, 40, 41, 42, 43],
+      "immagine_url": "https://picsum.photos/seed/moonboot/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 16,
+    "fields": {
+      "nome": "Stivale da Moto in Pelle",
+      "prezzo": "180.00",
+      "valuta": "EUR",
+      "descrizione": "Stivale robusto con fibbie e protezioni, pensato per i motociclisti.",
+      "categoria": "Stivali",
+      "materiale": "Pelle",
+      "disponibilita": true,
+      "taglie_disponibili": [41, 42, 43, 44, 45],
+      "immagine_url": "https://picsum.photos/seed/moto/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 17,
+    "fields": {
+      "nome": "Sandali in Pelle con Tacco",
+      "prezzo": "75.00",
+      "valuta": "EUR",
+      "descrizione": "Sandali eleganti con tacco basso e cinturino alla caviglia.",
+      "categoria": "Sandali",
+      "materiale": "Pelle",
+      "disponibilita": true,
+      "taglie_disponibili": [36, 37, 38, 39, 40, 41],
+      "immagine_url": "https://picsum.photos/seed/sandali/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 18,
+    "fields": {
+      "nome": "Infradito in Gomma Premium",
+      "prezzo": "25.00",
+      "valuta": "EUR",
+      "descrizione": "Infradito ergonomiche in gomma morbida, perfette per l'estate.",
+      "categoria": "Sandali",
+      "materiale": "Gomma",
+      "disponibilita": true,
+      "taglie_disponibili": [37, 38, 39, 40, 41, 42],
+      "immagine_url": "https://picsum.photos/seed/infradito/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 19,
+    "fields": {
+      "nome": "Zoccoli in Legno (Clogs)",
+      "prezzo": "55.00",
+      "valuta": "EUR",
+      "descrizione": "Zoccoli in legno con tomaia in pelle, comodi e alla moda.",
+      "categoria": "Lifestyle",
+      "materiale": "Legno / Pelle",
+      "disponibilita": false,
+      "taglie_disponibili": [38, 39, 40],
+      "immagine_url": "https://picsum.photos/seed/clogs/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 20,
+    "fields": {
+      "nome": "Scarpe da Ginnastica Bambino",
+      "prezzo": "35.00",
+      "valuta": "EUR",
+      "descrizione": "Sneaker leggere e colorate per bambini, con chiusura a strappo.",
+      "categoria": "Bambino",
+      "materiale": "Tessuto e gomma",
+      "disponibilita": true,
+      "taglie_disponibili": [26, 27, 28, 29, 30, 31, 32],
+      "immagine_url": "https://picsum.photos/seed/bambino/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 21,
+    "fields": {
+      "nome": "Scarpe da Sposa in Seta",
+      "prezzo": "250.00",
+      "valuta": "EUR",
+      "descrizione": "Scarpe eleganti in seta con dettagli in cristallo, per il giorno più bello.",
+      "categoria": "Cerimonia",
+      "materiale": "Seta",
+      "disponibilita": true,
+      "taglie_disponibili": [36, 37, 38, 39, 40],
+      "immagine_url": "https://picsum.photos/seed/sposa/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 22,
+    "fields": {
+      "nome": "Mocassini da Guida (Driving Shoes)",
+      "prezzo": "85.00",
+      "valuta": "EUR",
+      "descrizione": "Mocassini leggeri con suola in gomma a piccoli chiodi, ideali per guidare.",
+      "categoria": "Classiche",
+      "materiale": "Pelle",
+      "disponibilita": true,
+      "taglie_disponibili": [39, 40, 41, 42, 43, 44],
+      "immagine_url": "https://picsum.photos/seed/driving/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 23,
+    "fields": {
+      "nome": "Sneaker Platform Unisex",
+      "prezzo": "99.00",
+      "valuta": "EUR",
+      "descrizione": "Sneaker con suola rialzata, look streetwear e comfort imbottito.",
+      "categoria": "Sneakers",
+      "materiale": "Pelle e gomma",
+      "disponibilita": true,
+      "taglie_disponibili": [38, 39, 40, 41, 42, 43],
+      "immagine_url": "https://picsum.photos/seed/platform/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 24,
+    "fields": {
+      "nome": "Stivali da Pioggia (Wellingtons)",
+      "prezzo": "60.00",
+      "valuta": "EUR",
+      "descrizione": "Stivali in gomma impermeabili, alti fino al ginocchio, perfetti per la pioggia.",
+      "categoria": "Stivali",
+      "materiale": "Gomma",
+      "disponibilita": true,
+      "taglie_disponibili": [37, 38, 39, 40, 41, 42],
+      "immagine_url": "https://picsum.photos/seed/wellingtons/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 25,
+    "fields": {
+      "nome": "Scarpe da Danza (Jazz Shoes)",
+      "prezzo": "50.00",
+      "valuta": "EUR",
+      "descrizione": "Scarpe morbide in pelle scamosciata con suola divisa, per danza jazz e modern.",
+      "categoria": "Sportive",
+      "materiale": "Pelle scamosciata",
+      "disponibilita": false,
+      "taglie_disponibili": [36, 37, 38, 39, 40],
+      "immagine_url": "https://picsum.photos/seed/danza/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 26,
+    "fields": {
+      "nome": "Scarpe da Vela (Nautiche)",
+      "prezzo": "110.00",
+      "valuta": "EUR",
+      "descrizione": "Scarpe antiscivolo per la nautica, con suola in gomma bianca che non segna.",
+      "categoria": "Outdoor",
+      "materiale": "Pelle / Gomma",
+      "disponibilita": true,
+      "taglie_disponibili": [40, 41, 42, 43, 44, 45],
+      "immagine_url": "https://picsum.photos/seed/vela/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 27,
+    "fields": {
+      "nome": "Scarpe da Calcetto (Indoor)",
+      "prezzo": "45.00",
+      "valuta": "EUR",
+      "descrizione": "Scarpe leggere con suola in gomma per il calcio a 5 e campi indoor.",
+      "categoria": "Sportive",
+      "materiale": "Sintetico",
+      "disponibilita": true,
+      "taglie_disponibili": [39, 40, 41, 42, 43, 44],
+      "immagine_url": "https://picsum.photos/seed/calcetto/400/400",
+      "sconto": "0.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 28,
+    "fields": {
+      "nome": "Pantofole in Pelle con Pelo",
+      "prezzo": "40.00",
+      "valuta": "EUR",
+      "descrizione": "Pantofole morbide con interni in peluche e suola antiscivolo, per la casa.",
+      "categoria": "Lifestyle",
+      "materiale": "Pelle / Pelo sintetico",
+      "disponibilita": true,
+      "taglie_disponibili": [37, 38, 39, 40, 41, 42],
+      "immagine_url": "https://picsum.photos/seed/pantofole/400/400",
+      "sconto": "50.50"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 29,
+    "fields": {
+      "nome": "Scarpe Ortopediche in Pelle",
+      "prezzo": "130.00",
+      "valuta": "EUR",
+      "descrizione": "Scarpe con supporto plantare e ampia pianta, per massimo comfort e salute dei piedi.",
+      "categoria": "Salute",
+      "materiale": "Pelle",
+      "disponibilita": true,
+      "taglie_disponibili": [38, 39, 40, 41, 42, 43],
+      "immagine_url": "https://picsum.photos/seed/ortopedia/400/400",
+      "sconto": "30.00"
+    }
+  },
+  {
+    "model": "catalog.scarpe",
+    "pk": 30,
+    "fields": {
+      "nome": "Sneakers Eco-Friendly in Canapa",
+      "prezzo": "78.00",
+      "valuta": "EUR",
+      "descrizione": "Sneaker realizzate con materiali sostenibili come canapa e gomma riciclata.",
+      "categoria": "Sneakers",
+      "materiale": "Canapa / Gomma riciclata",
+      "disponibilita": true,
+      "taglie_disponibili": [38, 39, 40, 41, 42, 43, 44],
+      "immagine_url": "https://picsum.photos/seed/canapa/400/400",
+      "sconto": "25.00"
+    }
+  }
+]
